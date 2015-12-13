@@ -70,11 +70,36 @@ public class MainActivity extends AppCompatActivity {
         } else {
 
             //No Space
+            checkUser();
 
         }
 
     }   // clickLogin
 
+    private void checkUser() {
+
+        try {
+
+            String[] strMyResult = objManageTABLE.searchUser(userString);
+            // Check Password
+            if (passwordString.equals(strMyResult[2])) {
+
+                //Intent to OrderListView
+
+
+            } else {
+
+                MyAlertDialog objMyAlertDialog = new MyAlertDialog();
+                objMyAlertDialog.errorDialog(MainActivity.this, "Password False", "Please Try again Password False");
+
+            }
+
+        } catch (Exception e) {
+            MyAlertDialog objMyAlertDialog = new MyAlertDialog();
+            objMyAlertDialog.errorDialog(MainActivity.this, "User False", "No " + userString + " in my Database");
+        }
+
+    }
 
 
     private void synJSONtoSQLite() {
