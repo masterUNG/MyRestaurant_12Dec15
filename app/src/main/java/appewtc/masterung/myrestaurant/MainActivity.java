@@ -163,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
             try {
 
                 JSONArray objJsonArray = new JSONArray(strJSON);
-                for (int i=0;i<objJsonArray.length();i++) {
+                for (int i = 0; i < objJsonArray.length(); i++) {
 
                     JSONObject object = objJsonArray.getJSONObject(i);
 
@@ -195,12 +195,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
 
-
             intTable += 1;
         }   // while
-
-
-
 
 
     }   // synJSONtoSQLie
