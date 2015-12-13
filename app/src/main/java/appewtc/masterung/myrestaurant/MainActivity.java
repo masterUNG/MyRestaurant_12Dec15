@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -22,11 +24,16 @@ public class MainActivity extends AppCompatActivity {
 
     //Explicit
     private ManageTABLE objManageTABLE;
+    private EditText userEditText, passwordEditText;
+    private String userString, passwordString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Bind Widget
+        bindWidget();
 
         //Connected Database
         objManageTABLE = new ManageTABLE(this);
@@ -42,6 +49,33 @@ public class MainActivity extends AppCompatActivity {
 
 
     }   // Main Method
+
+    private void bindWidget() {
+        userEditText = (EditText) findViewById(R.id.editText);
+        passwordEditText = (EditText) findViewById(R.id.editText2);
+    }
+
+    public void clickLogin(View view) {
+
+        userString = userEditText.getText().toString().trim();
+        passwordString = passwordEditText.getText().toString().trim();
+
+        //Check Space
+        if (userString.equals("") || passwordString.equals("")) {
+
+            //Have Space
+            MyAlertDialog objMyAlertDialog = new MyAlertDialog();
+            objMyAlertDialog.errorDialog(MainActivity.this, "Have Space", "Please Fill All Every Blank");
+
+        } else {
+
+            //No Space
+
+        }
+
+    }   // clickLogin
+
+
 
     private void synJSONtoSQLite() {
 
