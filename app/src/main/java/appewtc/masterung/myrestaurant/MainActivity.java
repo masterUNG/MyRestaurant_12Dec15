@@ -1,5 +1,6 @@
 package appewtc.masterung.myrestaurant;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -85,6 +86,9 @@ public class MainActivity extends AppCompatActivity {
             if (passwordString.equals(strMyResult[2])) {
 
                 //Intent to OrderListView
+                Intent objIntent = new Intent(MainActivity.this, OrderListView.class);
+                objIntent.putExtra("Officer", strMyResult[3]);
+                startActivity(objIntent);
 
 
             } else {
